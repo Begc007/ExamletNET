@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Examlet.Services;
+using Examlet.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Examlet.Controllers {
     public class ModuleController : Controller {
+        private readonly ModuleService _moduleService;
+        public ModuleController(ModuleService moduleService)
+        {
+            _moduleService = moduleService;
+        }
         // GET: ModuleController
         public ActionResult Index() {
             return View();
@@ -12,10 +19,17 @@ namespace Examlet.Controllers {
         public ActionResult Details(int id) {
             return View();
         }
-
+        public ActionResult GetCard() {
+            return PartialView("/Views/Card/_Card.cshtml");
+        }
         // GET: ModuleController/Create
         public ActionResult Create() {
-            return View();
+            var model = new ModuleVM();
+            model.Cards.Add(new CardVM());
+            model.Cards.Add(new CardVM());
+            model.Cards.Add(new CardVM());
+
+            return View(nameof(Create), model);
         }
 
         // POST: ModuleController/Create

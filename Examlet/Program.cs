@@ -1,4 +1,5 @@
 using Examlet.Data;
+using Examlet.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -11,6 +12,8 @@ namespace Examlet {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             // Add services to the container.
+            builder.Services.AddScoped<ModuleService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Module</h1>
+
+<partial name="_Module.cshtml" />
+
+
+@section Scripts {
+    <script>
+        const btnAddCardEl = document.getElementById('btnAddCard');
+        
+        btnAddCardEl.addEventListener('click', async function () {
+            const cardContainerEl = document.getElementById('card-container');
+            const resp = await fetch('GetCard');
+            const cardPartial = await resp.text();
+
+            btnAddCardEl.insertAdjacentHTML('beforebegin', cardPartial);
+        });
+    </script>
+}
