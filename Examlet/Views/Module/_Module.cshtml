@@ -1,9 +1,8 @@
 ﻿@model Examlet.ViewModels.ModuleVM
 
-
 <hr />
 <div class="row">
-    <form asp-action="_Module" method="post">
+    <form asp-action="Create" method="post">
         <input type="hidden" asp-for="Id" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -20,9 +19,10 @@
             
 
         <div id="card-container" style="display: flex; flex-direction: column; row-gap: 7px; margin: 7px 0">
-            @foreach (var card in Model.Cards){
-                <partial name="/Views/Card/_Card.cshtml" model="card" />
-            }
+             @for (int i = 0; i < Model.Cards.Count; i++){ 
+                @* <partial name="/Views/Card/_Card.cshtml" for="Cards[i]" /> *@
+                @Html.EditorFor(m => m.Cards[i])
+             } 
             <input type="button" id="btnAddCard" value="Add Card" class="btn btn-secondary" style="align-self: center"/>
         </div>
 

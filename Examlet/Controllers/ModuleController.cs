@@ -20,14 +20,18 @@ namespace Examlet.Controllers {
             return View();
         }
         public ActionResult GetCard() {
-            return PartialView("/Views/Card/_Card.cshtml");
+            return PartialView("/Views/Shared/EditorTemplates/CardVM.cshtml", new CardVM());
         }
         // GET: ModuleController/Create
         public ActionResult Create() {
             var model = new ModuleVM();
-            model.Cards.Add(new CardVM());
-            model.Cards.Add(new CardVM());
-            model.Cards.Add(new CardVM());
+            model.Id = 1;
+            //model.Cards.Add(new CardVM() { Id = 1, Term="A", Definition = "AA"});
+            //model.Cards.Add(new CardVM() { Id = 2, Term = "B", Definition = "BB" });
+            //model.Cards.Add(new CardVM() { Id = 3, Term = "C", Definition = "CC" });
+            model.Cards.Add(new CardVM() );
+            model.Cards.Add(new CardVM() );
+            model.Cards.Add(new CardVM() );
 
             return View(nameof(Create), model);
         }
@@ -35,9 +39,9 @@ namespace Examlet.Controllers {
         // POST: ModuleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection) {
+        public ActionResult Create(ModuleVM model) {
             try {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             } catch {
                 return View();
             }
