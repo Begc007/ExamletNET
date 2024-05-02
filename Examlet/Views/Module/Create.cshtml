@@ -11,12 +11,23 @@
     <script>
         const btnAddCardEl = document.getElementById('btnAddCard');
         
+
         btnAddCardEl.addEventListener('click', async function () {
             const cardContainerEl = document.getElementById('card-container');
-            const resp = await fetch('GetCard');
+            const resp = await fetch('GetCardPlainHtml');
             const cardPartial = await resp.text();
 
             btnAddCardEl.insertAdjacentHTML('beforebegin', cardPartial);
         });
+
+        function beforeSubmit(){
+            const newCards = document.querySelectorAll("[data-card='new']");
+            let idx = 4;
+            for (let i = 0; i < newCards.length; i++ {
+                const card = newCards[i];
+                card.name = `Cards${idx++}.Id`;
+            }
+        }
+
     </script>
 }

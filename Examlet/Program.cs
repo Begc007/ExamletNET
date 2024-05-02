@@ -14,10 +14,8 @@ namespace Examlet {
             // Add services to the container.
             builder.Services.AddScoped<ModuleService>();
 
-            builder.Services.AddServerSideBlazor();
             builder.Services.AddControllersWithViews();
             
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -37,7 +35,6 @@ namespace Examlet {
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapBlazorHub();
 
             app.Run();
         }
