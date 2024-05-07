@@ -18,10 +18,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Module</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Module" asp-action="Index">Index</a></li>
+                                <li><a class="dropdown-item" asp-controller="Module" asp-action="Create">Create</a></li>
+                                <li><a class="dropdown-item" asp-controller="Module" asp-action="Edit" asp-route-id="5">Edit 5</a></li>
+                            </ul>
+                        </li>
+                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>

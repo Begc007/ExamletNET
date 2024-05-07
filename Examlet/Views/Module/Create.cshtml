@@ -1,33 +1,13 @@
-﻿@{
+﻿<h1>Create Module</h1>
+
+@{
     ViewData["Title"] = "Create";
+    ViewData["ActionName"] = "Create";
 }
 
-<h1>Create Module</h1>
-
-<partial name="_Module.cshtml" />
+<partial name="_Module.cshtml" view-data="ViewData" />
 
 
 @section Scripts {
-    <script>
-        const btnAddCardEl = document.getElementById('btnAddCard');
-        
-
-        btnAddCardEl.addEventListener('click', async function () {
-            const cardContainerEl = document.getElementById('card-container');
-            const resp = await fetch('GetCardPlainHtml');
-            const cardPartial = await resp.text();
-
-            btnAddCardEl.insertAdjacentHTML('beforebegin', cardPartial);
-        });
-
-        function beforeSubmit(){
-            const newCards = document.querySelectorAll("[data-card='new']");
-            let idx = 4;
-            for (let i = 0; i < newCards.length; i++ {
-                const card = newCards[i];
-                card.name = `Cards${idx++}.Id`;
-            }
-        }
-
-    </script>
+    <script src="~/js/custom/module.js"></script>
 }

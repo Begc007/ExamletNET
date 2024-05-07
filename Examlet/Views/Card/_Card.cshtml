@@ -1,18 +1,21 @@
 ﻿@model Examlet.ViewModels.CardVM
 
+@{
+    var readOnly = ViewData["ReadOnly"] is null ? false : true;
+}
+
 <div style="display:flex; gap: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition: 0.3s;border-radius: 5px; padding: 5px; background-color: #FFFFFF">
-    @* <input type="hidden" asp-for="ModuleId" /> *@
     <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div style="display: flex; gap: 10px; flex-grow: 1">
+    <div data-card="container" style="display: flex; gap: 10px; flex-grow: 1">
         <div style="flex-grow: 1">
-            <label asp-for="Term" class="control-label"></label>
-            <input asp-for="Term" class="form-control" style="min-width: 400px"/>
+            <label asp-for='Term' class="control-label"></label>
+            <input data-card="term" asp-for="Term" class="form-control" style="min-width: 400px" readonly="@readOnly" />
             <span asp-validation-for="Term" class="text-danger"></span>
         </div>
         <div style="flex-grow: 1">
             <label asp-for="Definition" class="control-label"></label>
-            <textarea asp-for="Definition" class="form-control" style="min-width: 400px;" rows="5" ></textarea>
+            <textarea data-card="definition" asp-for="Definition" class="form-control" style="min-width: 400px;" rows="5" readonly="@readOnly"></textarea>
             <span asp-validation-for="Definition" class="text-danger"></span>
         </div>
     </div>
